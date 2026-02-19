@@ -18,7 +18,7 @@
     * { margin:0; padding:0; box-sizing:border-box; }
 
     :root {
-      --bg: #292929;
+      --bg: #1d1d1d;
       --bg-secondary: #2a2a2a;
       --text-primary: #ffffff;
       --text-secondary: #e0e0e0;
@@ -37,7 +37,6 @@
       position: relative;
     }
 
-    /* Subtle background pattern */
     body::before {
       content: '';
       position: fixed;
@@ -90,7 +89,6 @@
       max-width: 460px;
       object-fit: contain;
       filter: drop-shadow(0 25px 50px rgba(0,0,0,0.3));
-      animation: float 6s ease-in-out infinite;
       transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
       border-radius: 30px;
     }
@@ -101,31 +99,10 @@
 
     .content { animation: fadeIn 0.8s ease-out; }
 
-    .logo {
-      width: 56px; height: 56px;
-      margin-bottom: 3rem;
-      opacity: 0;
-      animation: fadeInUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.3s forwards;
-      background: var(--text-primary);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 24px;
-      color: var(--bg);
-      font-weight: bold;
-    }
-    .logo:hover { transform: scale(1.1); transition: transform 0.3s ease; }
-
     @keyframes fadeIn { from {opacity:0} to {opacity:1} }
     @keyframes fadeInUp {
       from { opacity:0; transform:translateY(30px) }
       to   { opacity:1; transform:translateY(0)   }
-    }
-    @keyframes float {
-      0%,100% { transform: translateY(0) }
-      50%     { transform: translateY(-10px) }
     }
 
     h1 {
@@ -137,7 +114,6 @@
       color: var(--text-primary);
       opacity: 0;
       animation: fadeInUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.4s forwards;
-      text-transform: uppercase;
     }
 
     .subtitle {
@@ -151,7 +127,6 @@
 
     .download-buttons {
       display: flex;
-      flex-wrap: wrap;
       gap: 1rem;
       margin-bottom: 4rem;
       opacity: 0;
@@ -171,17 +146,11 @@
       position: relative;
       overflow: hidden;
       transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
-    }
-
-    .download-btn.app-store,
-    .download-btn.google-play {
       background: var(--button-primary);
       color: var(--text-primary);
       border: 2px solid var(--border);
     }
-
-    .download-btn.app-store::before,
-    .download-btn.google-play::before {
+    .download-btn::before {
       content: '';
       position: absolute;
       top:50%; left:50%;
@@ -191,14 +160,10 @@
       transform:translate(-50%,-50%);
       transition:width 0.6s, height 0.6s;
     }
-
-    .download-btn.app-store:hover::before,
-    .download-btn.google-play:hover::before {
+    .download-btn:hover::before {
       width:300px; height:300px;
     }
-
-    .download-btn.app-store:hover,
-    .download-btn.google-play:hover {
+    .download-btn:hover {
       transform: translateY(-3px);
       box-shadow: 0 10px 30px rgba(0,0,0,0.3);
       background: var(--button-primary-hover);
@@ -223,7 +188,6 @@
       }
       .app-showcase { order: 1 }
       .content      { order: 2 }
-      .logo { margin: 0 auto 2rem }
       .download-buttons { flex-direction: column; align-items: center }
       .app-demo-img { max-width: 380px }
     }
@@ -233,7 +197,6 @@
       h1 { font-size: 3rem; margin-bottom: 0.75rem }
       .subtitle { font-size: 1.25rem; margin-bottom: 1rem }
       .app-demo-img { max-width: 260px }
-      .logo { width: 48px; height: 48px; font-size: 20px }
     }
   </style>
 </head>
@@ -241,14 +204,19 @@
   <div class="container">
     <div class="content-wrapper">
       <div class="app-showcase">
-        <img src="images/blinkbattle-demo.png"
-             alt="BlinkBattle app interface showing the game screen."
-             class="app-demo-img">
+        <video
+          class="app-demo-img"
+          autoplay
+          loop
+          muted
+          playsinline>
+          <source src="assets/blink_battle_demo_final.mp4" type="video/mp4">
+          <source src="assets/blink_battle_demo_final.mov" type="video/quicktime">
+        </video>
       </div>
       <div class="content">
-        <div class="logo">BB</div>
-        <h1>BlinkBattle</h1>
-        <p class="subtitle">Blink to Win</p>
+        <h1>Blink Battle</h1>
+        <p class="subtitle">Micro Wars</p>
 
         <div class="download-buttons">
           <a href="#"
